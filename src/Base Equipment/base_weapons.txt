@@ -1,0 +1,6 @@
+Sword,7,4,180,2,light slash
+Axe,8,5,175,1,heavy slash
+Spear,6,7,125,3,stab
+Hammer,9,9,145,2,crush
+Bow,4,3,135,80,stab
+

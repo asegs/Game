@@ -1,0 +1,5 @@
+Helmet,3,4,95,Head
+Chestpiece,6,16,345,Body
+Gauntlets,2,2,45,Gloves
+Leg guards,4,6,125,Legs
+Boots,3,2,80,Boots
