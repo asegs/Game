@@ -3,6 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Merchant {
+    private String name;
     private int dollars;
     private Inventory inventory;
     private int relationship;
@@ -51,83 +52,9 @@ public class Merchant {
         return item;
     }
 
-    public int getValFile(int pos,double mod,String[] weaponAtts){
-        return (int)(Integer.parseInt(weaponAtts[pos])*mod);
-    }
 
-    public Weapon makeWeapon(String prefix,double dmgMod,double wgtMod,double valMod,double rangeMod,String[] weaponAtts,boolean twoHanded){
-        String name = prefix+weaponAtts[0];
-        int damage = getValFile(1,dmgMod,weaponAtts);
-        int weight = getValFile(2,wgtMod,weaponAtts);
-        int value = getValFile(3,valMod,weaponAtts);
-        int range = getValFile(4,rangeMod,weaponAtts);
-        if (range<1){
-            range = 1;
-        }
-        return new Weapon(value,weight,name,damage,range,twoHanded,weaponAtts[5]);
-    }
 
-    public void stockWeapons(int n){
-        Random random = new Random();
-        String file = fileReader.reader("src/Base Equipment/base_weapons.txt","\n");
-        String[] weapons = file.split("\n",0);
-        for (int i = 0;i<n;i++){
-            int size = random.nextInt(4);
-            String weapon = weapons[random.nextInt(weapons.length)];
-            String[] weaponAtts = weapon.split(",",0);
-            Weapon weapon1 =  new Weapon(0,0,"empty",0,0,false,"empty");
-            switch (size){
-                case 0:
-                    weapon1 = makeWeapon("Concealed ",0.5,0.33,0.45,0.5,weaponAtts,false);
-                    break;
-                case 1:
-                    weapon1 = makeWeapon("Light ",0.75,0.8,0.9,0.75,weaponAtts,false);
-                    break;
-                case 2:
-                    weapon1 = makeWeapon("Standard ",1,1,1,1,weaponAtts,true);
-                    break;
-                case 3:
-                    weapon1 = makeWeapon("Great ",1.5,1.75,1.6,1.4,weaponAtts,true);
-                    break;
-            }
-            this.inventory.addToInventory(weapon1);
-        }
-    }
 
-    public Armor makeArmor(String prefix,double defMod,double wgtMod,double valMod,String placement,String[] armorAtts){
-        String name = prefix+armorAtts[0];
-        int def = getValFile(1,defMod,armorAtts);
-        int weight = getValFile(2,wgtMod,armorAtts);
-        int value = getValFile(3,valMod,armorAtts);
-        return new Armor(value,weight,name,def,placement);
-    }
-
-    public void stockArmors(int n){
-        Random random = new Random();
-        String file = fileReader.reader("src/Base Equipment/base_armors.txt","\n");
-        String[] armors = file.split("\n",0);
-        for (int i = 0;i<n;i++){
-            int material = random.nextInt(4);
-            String armor = armors[random.nextInt(armors.length)];
-            String[] armorAtts = armor.split(",",0);
-            Armor armor1 = new Armor(0,0,"empty",0,"empty");
-            switch (material){
-                case 0:
-                    armor1 = makeArmor("Cloth ",0.4,0.35,0.35,armorAtts[4],armorAtts);
-                    break;
-                case 1:
-                    armor1 = makeArmor("Leather ",0.75,0.5,0.65,armorAtts[4],armorAtts);
-                    break;
-                case 2:
-                    armor1 = makeArmor("Chainmail ",1,1,1,armorAtts[4],armorAtts);
-                    break;
-                case 3:
-                    armor1 = makeArmor("Steel ",1.6,1.85,1.75,armorAtts[4],armorAtts);
-                    break;
-            }
-            this.getInventory().addToInventory(armor1);
-        }
-    }
 
     public void buy(Character character, Item item){
         if (character.getAttributes().getInventory().getMoney()>=item.getValue()){
@@ -168,6 +95,14 @@ public class Merchant {
 
     public Inventory getInventory() {
         return inventory;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 
     public void setInventory(Inventory inventory) {
@@ -211,6 +146,11 @@ public class Merchant {
                     case "A":
                         ArrayList<Item> armors = this.inventory.getArmors();
                         displayInventory(armors);
+                        if (armors.size()==0){
+                            System.out.println("This merchant has no armor.");
+                            finalItem=browseInventory();
+                            break;
+                        }
                         System.out.println("Choose an item from the list to buy:");
                         int armorChoice = scanner.nextInt();
                         Item armorItem = armors.get(armorChoice);
@@ -219,6 +159,11 @@ public class Merchant {
                     case "W":
                         ArrayList<Item> weapons = this.inventory.getWeapons();
                         displayInventory(weapons);
+                        if (weapons.size()==0){
+                            System.out.println("This merchant has no weapons.");
+                            finalItem=browseInventory();
+                            break;
+                        }
                         System.out.println("Choose an item from the list to buy:");
                         int weaponChoice = scanner.nextInt();
                         Item weaponItem = weapons.get(weaponChoice);
@@ -227,6 +172,11 @@ public class Merchant {
                     case "P":
                         ArrayList<Item> potions = this.inventory.getPotions();
                         displayInventory(potions);
+                        if (potions.size()==0){
+                            System.out.println("This merchant has no potions.");
+                            finalItem=browseInventory();
+                            break;
+                        }
                         System.out.println("Choose an item from the list to buy:");
                         int potionChoice = scanner.nextInt();
                         Item potionItem = potions.get(potionChoice);
@@ -235,6 +185,11 @@ public class Merchant {
                     case "E":
                         ArrayList<Item> equipment = this.inventory.getEquipment();
                         displayInventory(equipment);
+                        if (equipment.size()==0){
+                            System.out.println("This merchant has no equipment.");
+                            finalItem=browseInventory();
+                            break;
+                        }
                         System.out.println("Choose an item from the list to buy:");
                         int equipChoice = scanner.nextInt();
                         Item equipItem = equipment.get(equipChoice);
@@ -261,11 +216,18 @@ public class Merchant {
         return true;
     }
 
+    public void writeMerchant(){
+        String file = name+","+inventory.getMoney()+","+relationship+"\n";
+        file+=inventory.toFile();
+        fileEditor.replaceFile("src/Merchants/merc_"+name+".txt",file,false);
+    }
+
     public static void main(String[] args) {
         Merchant merchant = new Merchant(0,new Inventory(),0);
-        merchant.stockWeapons(5);
-        merchant.stockArmors(5);
+        merchant.inventory.getItems().add(RandomItems.randomWeapon(3));
+        merchant.inventory.getItems().add(RandomItems.randomArmor("Body",3));
         merchant.browseInventory();
+        merchant.writeMerchant();
 
 
     }

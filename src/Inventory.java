@@ -85,4 +85,28 @@ public class Inventory {
         }
         return equipmentList;
     }
+
+    public String toFile(){
+        String file = "";
+        for (Item item : items){
+            if (item instanceof Weapon){
+                Weapon weapon = (Weapon) item;
+                file+="<W>"+weapon.toFile()+"\n";
+            }
+            if (item instanceof Armor){
+                Armor armor = (Armor)item;
+                file+="<A>"+armor.toFile()+"\n";
+            }
+            if (item instanceof Potion){
+                Potion potion = (Potion) item;
+                file+="<P>"+potion.toFile()+"\n";
+            }
+            if (item instanceof Equipment){
+                Equipment equipment = (Equipment)item;
+                file+="<T>"+equipment.toFile()+"\n";
+            }
+
+        }
+        return file;
+    }
 }

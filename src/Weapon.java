@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Weapon extends Item {
     private int damage;
     private int range;
@@ -59,4 +61,6 @@ public class Weapon extends Item {
     public void setTwoHanded(boolean hands){
         twoHanded = hands;
     }
+
+
 }

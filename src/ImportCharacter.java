@@ -1,12 +1,12 @@
-public class Life {
-    public Character impChar(String filename){
+public class ImportCharacter {
+    public static Character impChar(String filename){
         String charString = fileReader.reader(filename,"\n");
         Character character = new Character();
         Attributes attributes = new Attributes();
         Inventory inventory = new Inventory();
         String[] imported = charString.split("\n",0);
         for (String string : imported){
-            if (string.substring(0,3).equals("<I>")){
+            if (string.substring(0,1).equals("<")){
                 String type = string.substring(0,3);
                 switch (type){
                     case "<E>":
@@ -15,32 +15,33 @@ public class Life {
                         Armor armor = new Armor(Integer.parseInt(armorAtts[3]),Integer.parseInt(armorAtts[2]),armorAtts[0],Integer.parseInt(armorAtts[1]),armorAtts[4]);
                         switch (armor.getLocation()){
                             case "Head":
-                                character.setEqHead(armor);
+                                character.getEquipped().setEqHead(armor);
                                 break;
                             case "Body":
-                                character.setEqBody(armor);
+                                character.getEquipped().setEqBody(armor);
                                 break;
                             case "Gloves":
-                                character.setEqGloves(armor);
+                                character.getEquipped().setEqGloves(armor);
                                 break;
                             case "Legs":
-                                character.setEqLegs(armor);
+                                character.getEquipped().setEqLegs(armor);
                                 break;
                             case "Boots":
-                                character.setEqBoots(armor);
+                                character.getEquipped().setEqBoots(armor);
                                 break;
                         }
+                        break;
                     case "<1>" :
                         String weaponString = string.substring(3,string.length());
-                        character.setMain(weaponFromFile(weaponString));
+                        character.getEquipped().setMain(weaponFromFile(weaponString));
                         break;
                     case "<2>":
                         String weaponString1 = string.substring(3,string.length());
-                        character.setSecondary(weaponFromFile(weaponString1));
+                        character.getEquipped().setSecondary(weaponFromFile(weaponString1));
                         break;
                     case "<3>":
                         String weaponString2 = string.substring(3,string.length());
-                        character.setBoot(weaponFromFile(weaponString2));
+                        character.getEquipped().setBoot(weaponFromFile(weaponString2));
                         break;
                     case "<P>":
                         String potionString = string.substring(3,string.length());
@@ -85,6 +86,7 @@ public class Life {
                 inventory.setMoney(Integer.parseInt(spliced[13]));
                 character.setHealth(Integer.parseInt(spliced[14]));
                 character.setMaxHealth(Integer.parseInt(spliced[15]));
+                attributes.setDifficulty(Integer.parseInt(spliced[16]));
             }
         }
         attributes.setInventory(inventory);
@@ -92,7 +94,7 @@ public class Life {
         return character;
     }
 
-    public Weapon weaponFromFile(String string){
+    public static Weapon weaponFromFile(String string){
         String[] weaponAtts = string.split(",",0);
         Weapon weapon = new Weapon((Integer.parseInt(weaponAtts[3])),Integer.parseInt(weaponAtts[2]),weaponAtts[0],Integer.parseInt(weaponAtts[1]),Integer.parseInt(weaponAtts[4]),false,weaponAtts[5]);
         String name = weapon.getName();

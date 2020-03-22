@@ -1,12 +1,14 @@
 import java.util.Scanner;
 
 public class newCharacter {
-    public Attributes buildCharacter(){
+    public static Attributes buildCharacter(){
         Attributes attributes = new Attributes();
         System.out.println("Here you will build a character.  You will be able to change any field once finished.");
         Scanner scanner = new Scanner(System.in);
         System.out.println("What is this character's name?:");
         attributes.setName(scanner.nextLine());
+        System.out.println("Easy (0) Standard (1) Hard (2) Extra hard (3) Realistic (4):");
+        attributes.setDifficulty(scanner.nextInt());
         attributes.setAge(GetCappedInt.capped("What is this character's age?:",13,85));
         attributes.setWeight(GetCappedInt.capped("What is this character's weight?:",40,450));
         attributes.setHeight(GetCappedInt.capped("What is this character's height in inches?:",42,90));

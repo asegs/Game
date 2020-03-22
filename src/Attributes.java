@@ -14,6 +14,7 @@ public class Attributes {
 
     private int level;
     private int experience;
+    private int difficulty;
 
     private Inventory inventory;
 
@@ -145,5 +146,12 @@ public class Attributes {
 
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
+    }
+    public int getDifficulty(){
+        return difficulty;
+    }
+
+    public void setDifficulty(int n){
+        difficulty = n;
     }
 }
