@@ -8,10 +8,11 @@ public class Merchant {
     private Inventory inventory;
     private int relationship;
 
-    public Merchant(int dollars,Inventory inventory,int relationship){
+    public Merchant(int dollars,Inventory inventory,int relationship,String name){
         this.dollars = dollars;
         this.inventory = inventory;
         this.relationship = relationship;
+        this.name = name;
     }
 
     public Item barter(Item item){
@@ -223,11 +224,17 @@ public class Merchant {
     }
 
     public static void main(String[] args) {
-        Merchant merchant = new Merchant(0,new Inventory(),0);
+        Merchant merchant = new Merchant(0,new Inventory(),0,"Jim");
         merchant.inventory.getItems().add(RandomItems.randomWeapon(3));
         merchant.inventory.getItems().add(RandomItems.randomArmor("Body",3));
         merchant.browseInventory();
         merchant.writeMerchant();
+        EnemyNPC enemyNPC = new EnemyNPC();
+        Character character = ImportCharacter.impChar("src/Characters/char_John.txt");
+        enemyNPC = enemyNPC.randomNPC(character);
+        System.out.println(enemyNPC.getEquipped().getEqHead().toString());
+        System.out.println(character.getAttributes().getLevel());
+        System.out.println(enemyNPC.getMaxHealth());
 
 
     }
