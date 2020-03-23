@@ -2,19 +2,19 @@ import java.util.Scanner;
 
 public class StartGame {
     Scanner scanner = new Scanner(System.in);
-    public void titleScreen(){
+    public Character titleScreen(){
         System.out.println("Geas\nBy AJS");
+        Character character = new Character();
         while (true){
             System.out.println("Do you want to start a new game ('N'), load a game ('L'), view stats ('S'), or quit ('Q'):");
             String choice = scanner.nextLine();
             if (choice.equals("N")){
                 Attributes attributes = newCharacter.buildCharacter();
-                Character character = new Character();
                 character.setAttributes(attributes);
                 break;
             }
             if (choice.equals("L")){
-                Character character = loadChar();
+                character = loadChar();
                 break;
             }
             if (choice.equals("S")){
@@ -25,6 +25,7 @@ public class StartGame {
                 break;
             }
         }
+        return character;
     }
 
     public Character loadChar(){
@@ -40,6 +41,9 @@ public class StartGame {
 
     public static void main(String[] args) {
         StartGame startGame = new StartGame();
-        startGame.titleScreen();
+        Character character = startGame.titleScreen();
+        EnemyNPC enemyNPC = new EnemyNPC();
+        enemyNPC = enemyNPC.randomNPC(character);
+        Fight.attackEnemy(character,enemyNPC);
     }
 }

@@ -82,4 +82,8 @@ public class Equipped {
     public void setBoot(Weapon boot) {
         this.boot = boot;
     }
+
+    public int getTotalWeight(){
+        return (getEqHead().getWeight()+getEqBody().getWeight()+getEqGloves().getWeight()+getEqLegs().getWeight()+getEqBoots().getWeight()+getMain().getWeight()+getSecondary().getWeight()+getBoot().getWeight());
+    }
 }

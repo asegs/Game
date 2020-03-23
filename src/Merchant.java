@@ -223,19 +223,18 @@ public class Merchant {
         fileEditor.replaceFile("src/Merchants/merc_"+name+".txt",file,false);
     }
 
-    public static void main(String[] args) {
-        Merchant merchant = new Merchant(0,new Inventory(),0,"Jim");
-        merchant.inventory.getItems().add(RandomItems.randomWeapon(3));
-        merchant.inventory.getItems().add(RandomItems.randomArmor("Body",3));
-        merchant.browseInventory();
-        merchant.writeMerchant();
-        EnemyNPC enemyNPC = new EnemyNPC();
-        Character character = ImportCharacter.impChar("src/Characters/char_John.txt");
-        enemyNPC = enemyNPC.randomNPC(character);
-        System.out.println(enemyNPC.getEquipped().getEqHead().toString());
-        System.out.println(character.getAttributes().getLevel());
-        System.out.println(enemyNPC.getMaxHealth());
-
-
-    }
+//    public static void main(String[] args) {
+//        Merchant merchant = new Merchant(0,new Inventory(),0,"Jim");
+//        merchant.inventory.getItems().add(RandomItems.randomWeapon(3));
+//        merchant.inventory.getItems().add(RandomItems.randomArmor("Body",3));
+//        merchant.browseInventory();
+//        merchant.writeMerchant();
+//        EnemyNPC enemyNPC = new EnemyNPC();
+//        Character character = ImportCharacter.impChar("src/Characters/char_John.txt");
+//        enemyNPC = enemyNPC.randomNPC(character);
+//        System.out.println(enemyNPC.getEquipped().getEqHead().toString());
+//        System.out.println(enemyNPC.getInventory().getMoney());
+//
+//
+//    }
 }

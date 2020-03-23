@@ -38,7 +38,7 @@ public class EnemyNPC {
         npc.equipped.setMain(RandomItems.randomWeapon(-1));
         npc.equipped.setSecondary(RandomItems.randomWeapon(-1));
         npc.equipped.setBoot(RandomItems.randomWeapon(-1));
-        npc.setMaxHealth((character.getAttributes().getDifficulty()+1)*5+(random.nextInt(3)*character.getAttributes().getLevel()));
+        npc.setMaxHealth((character.getAttributes().getDifficulty()+1)*5+(random.nextInt(3))*character.getAttributes().getLevel());
         npc.setHealth(npc.getMaxHealth());
         if (npc.getEquipped().getMain().getRange()>5){
             npc.baseDamageLong = 4*(character.getAttributes().getDifficulty()+1);
@@ -48,7 +48,7 @@ public class EnemyNPC {
             npc.baseDamageLong = 2*(character.getAttributes().getDifficulty()+1);
             npc.baseDamageShort = 4*(character.getAttributes().getDifficulty()+1);
         }
-        npc.inventory.addMoney(random.nextInt(maxHealth*character.getAttributes().getLuck())+1);
+        npc.getInventory().addMoney(random.nextInt(npc.getMaxHealth()*character.getAttributes().getLuck())+1);
         return npc;
     }
 
