@@ -8,6 +8,8 @@ public class Merchant {
     private Inventory inventory;
     private int relationship;
 
+    Scanner scanner = new Scanner(System.in);
+
     public Merchant(int dollars,Inventory inventory,int relationship,String name){
         this.dollars = dollars;
         this.inventory = inventory;
@@ -16,9 +18,11 @@ public class Merchant {
     }
 
     public Item barter(Item item){
-        Scanner scanner = new Scanner(System.in);
         while (true){
             int idealPrice = (int) item.getValue()*(15-relationship)/10;
+            if (idealPrice<(0.5*item.getValue())){
+                idealPrice = (int)(0.5 * item.getValue());
+            }
             double reallyLow = idealPrice*0.6;
             double low = idealPrice*0.9;
             System.out.println("The "+item.getName()+" costs "+idealPrice+".  How much do you offer?");
@@ -53,7 +57,13 @@ public class Merchant {
         return item;
     }
 
-
+    public void stock(int n){
+        for (int i = 0;i<n;i++){
+            inventory.addToInventory(RandomItems.randomWeapon(-1));
+            inventory.addToInventory(RandomItems.randomArmor("",-1));
+            writeMerchant();
+        }
+    }
 
 
 
@@ -133,6 +143,15 @@ public class Merchant {
     }
 
     public Item browseInventory(){
+        if(getRelationship()<3&&getRelationship()>-3){
+            System.out.println("Welcome to my shop.");
+        }
+        else if (getRelationship()>=3){
+            System.out.println("Good to see you again!");
+        }
+        else if (getRelationship()<=-3){
+            System.out.println("Oh, you again.");
+        }
         Scanner scanner = new Scanner(System.in);
         displayInventory(this.inventory.getItems());
         Item finalItem = new Weapon(0,0,"empty",0,0,false,"empty");
@@ -217,11 +236,41 @@ public class Merchant {
         return true;
     }
 
+    public void sellTo(Character character){
+        int counter = 0;
+        for (Item item : character.getAttributes().getInventory().getItems()){
+            System.out.println("("+counter+") "+item.getName()+", "+item.getValue());
+            counter++;
+        }
+        System.out.println("Which number item do you wish to sell?:");
+        Item item = character.getAttributes().getInventory().getItems().get(scanner.nextInt());
+        int value = (int)(item.getValue()*((5.0+getRelationship())/10.0));
+        if (value>item.getValue()*1.25){
+            value = (int)(item.getValue()*1.25);
+        }
+        if (this.getDollars()>=value){
+            System.out.println(getName()+" offers to buy your "+item.getName()+" for "+value+" dollars.");
+            System.out.println("Y/N");
+            String entry = scanner.next();
+            if (entry.equals("N")){
+                System.out.println("No sale.");
+            }
+            else {
+                this.setDollars(this.getDollars() - value);
+                character.getAttributes().getInventory().setMoney(character.getAttributes().getInventory().getMoney() + value);
+                character.getAttributes().getInventory().getItems().remove(item);
+                this.getInventory().addToInventory(item);
+            }
+        }
+    }
+
     public void writeMerchant(){
-        String file = name+","+inventory.getMoney()+","+relationship+"\n";
+        String file = name+","+getDollars()+","+relationship+"\n";
         file+=inventory.toFile();
         fileEditor.replaceFile("src/Merchants/merc_"+name+".txt",file,false);
     }
+
+
 
 //    public static void main(String[] args) {
 //        Merchant merchant = new Merchant(0,new Inventory(),0,"Jim");

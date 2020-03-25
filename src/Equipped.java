@@ -14,9 +14,9 @@ public class Equipped {
         eqGloves = new Armor(0,0,"bare hands",0,"Gloves");
         eqLegs = new Armor(0,0,"bare legs",0,"Legs");
         eqBoots = new Armor(0,0,"barefoot", 0,"Boots");
-        main = new Weapon(0,0,"right punch",1,1,false,"Crush");
-        secondary = new Weapon(0,0,"left punch",1,1,false,"Crush");
-        boot = new Weapon(0,0,"shiv",1,1,false,"Stab");
+        main = new Weapon(0,0,"right punch",3,1,false,"Crush");
+        secondary = new Weapon(0,0,"left punch",3,1,false,"Crush");
+        boot = new Weapon(0,0,"shiv",3,1,false,"Stab");
     }
 
     public Armor getEqHead() {
@@ -85,5 +85,9 @@ public class Equipped {
 
     public int getTotalWeight(){
         return (getEqHead().getWeight()+getEqBody().getWeight()+getEqGloves().getWeight()+getEqLegs().getWeight()+getEqBoots().getWeight()+getMain().getWeight()+getSecondary().getWeight()+getBoot().getWeight());
+    }
+
+    public String toString(){
+        return getEqHead().toString()+"\n"+getEqBody().toString()+"\n"+getEqGloves().toString()+"\n"+getEqLegs().toString()+"\n"+getEqBoots().toString()+"\n"+getMain().toString()+"\n"+getSecondary().toString()+"\n"+getBoot().toString();
     }
 }

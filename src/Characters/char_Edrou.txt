@@ -1,0 +1,16 @@
+Edrou,1,0,20,155,72,0,1,0,2,0,3,0,290,13,21,1
+<E>bowl cut,0,0,0,Head
+<E>bare chested,0,0,0,Body
+<E>Leather Gauntlets,1,1,40,Gloves
+<E>Chainmail Leg guards,4,6,5,Legs
+<E>Steel Leg guards,6,11,218,Boots
+<1>Great Spear,9,12,280,4,stab
+<2>Light sword,5,5,125,1,light slash
+<3>shiv,3,0,0,1,Stab
+<A>Leather Gauntlets,1,1,40,Gloves
+<A>Steel Leg guards,6,11,218,Boots
+<A>Chainmail Leg guards,4,6,5,Legs
+<A>Leather Chestpiece,4,8,1000,Body
+<W>Great Sword,10,7,144,2,light slash
+<W>Great Spear,9,12,280,4,stab
+

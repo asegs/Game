@@ -6,7 +6,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Bard {
-    public void interact() {
+    Random random = new Random();
+    public int interact() {
+        int pay = random.nextInt(10)+15;
         Scanner scanner = new Scanner(System.in);
         String[] happyWordPrim = new String[]{"love","peace","joy","happy","beauty","kind"};
         ArrayList<String> happyWords = new ArrayList<>(Arrays.asList(happyWordPrim));
@@ -128,12 +130,14 @@ public class Bard {
             if (appreciation==0){
                 System.out.println(kingASCII);
                 System.out.println("Get out of my court!");
-                break;
+                System.out.println("You are paid 0 dollars.");
+                return 0;
             }
             if (appreciation==4){
                 System.out.println(kingASCII);
                 System.out.println("Thank you very much, do come back!");
-                break;
+                System.out.println("You are paid "+pay+" dollars!");
+                return pay;
             }
         }
     }

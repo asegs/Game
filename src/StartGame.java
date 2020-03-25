@@ -11,6 +11,9 @@ public class StartGame {
             if (choice.equals("N")){
                 Attributes attributes = newCharacter.buildCharacter();
                 character.setAttributes(attributes);
+                character.genStats();
+                character.export();
+                fileEditor.addToFile("src/char_names.txt",character.getAttributes().getName(),false);
                 break;
             }
             if (choice.equals("L")){
@@ -39,11 +42,18 @@ public class StartGame {
 
     }
 
-    public static void main(String[] args) {
-        StartGame startGame = new StartGame();
-        Character character = startGame.titleScreen();
-        EnemyNPC enemyNPC = new EnemyNPC();
-        enemyNPC = enemyNPC.randomNPC(character);
-        Fight.attackEnemy(character,enemyNPC);
-    }
+//    public static void main(String[] args) throws InterruptedException {
+//        StartGame startGame = new StartGame();
+//        Character character = startGame.titleScreen();
+//        EnemyNPC enemyNPC = new EnemyNPC();
+//        int counter = 0;
+//        Life life = new Life();
+//        life.hub(character);
+//        while (character.getHealth()>0){
+//            enemyNPC = enemyNPC.randomNPC(character);
+//            Fight.duel(character,enemyNPC);
+//            counter++;
+//            System.out.println("You have killed "+counter+" people.");
+//        }
+//    }
 }

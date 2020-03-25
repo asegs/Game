@@ -1,4 +1,4 @@
-John,1,0,31,155,70,0,1,1,1,1,1,1,125,22,22,1
+John,1,0,31,155,70,0,1,1,1,1,1,1,139,18,22,1
 <E>Steel helmet,10,6,155,Head
 <E>Steel chestpiece,14,35,555,Body
 <E>Steel gloves,6,4,125,Gloves
@@ -12,3 +12,20 @@ John,1,0,31,155,70,0,1,1,1,1,1,1,125,22,22,1
 <W>Great spear,10,12,280,5,Stab
 <P>Healing potion,20,1,Health,0,Red,8
 <T>Rope,Climbing,2,60,10
+<A>Steel Leg guards,6,11,218,Head
+<A>Leather Gauntlets,1,1,29,Body
+<A>Leather Gauntlets,1,1,29,Gloves
+<A>Cloth Boots,1,0,28,Legs
+<A>Chainmail Leg guards,4,6,125,Boots
+<W>Standard Hammer,9,9,145,2,crush
+<W>Standard Hammer,9,9,145,2,crush
+<W>Concealed Axe,4,1,78,1,heavy slash
+<A>Chainmail Helmet,3,4,95,Head
+<A>Steel Leg guards,6,11,218,Body
+<A>Cloth Boots,1,0,28,Gloves
+<A>Cloth Boots,1,0,28,Legs
+<A>Cloth Chestpiece,2,5,120,Boots
+<W>Light Axe,6,4,157,1,heavy slash
+<W>Concealed Hammer,4,2,65,1,crush
+<W>Concealed Spear,3,2,56,1,stab
+

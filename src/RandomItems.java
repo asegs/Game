@@ -28,7 +28,7 @@ public class RandomItems {
         String weapon = weapons[random.nextInt(weapons.length)];
         String[] weaponAtts = weapon.split(",",0);
         Weapon weapon1 =  new Weapon(0,0,"empty",0,0,false,"empty");
-        if (size>=0&&size<4){
+        if (preSize>=0&&preSize<4){
             size = preSize;
         }
         switch (size){

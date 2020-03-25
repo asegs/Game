@@ -2,6 +2,8 @@
   <dictionary name="aaron">
     <words>
       <w>atts</w>
+      <w>loadout</w>
+      <w>lootable</w>
     </words>
   </dictionary>
 </component>

@@ -1,3 +1,5 @@
+import com.sun.jdi.request.StepRequest;
+
 public class ImportCharacter {
     public static Character impChar(String filename){
         String charString = fileReader.reader(filename,"\n");
@@ -104,4 +106,41 @@ public class ImportCharacter {
         }
         return weapon;
     }
-}
+
+    public static Merchant impMerch(String name){
+        String[] merchSplit = fileReader.reader("src/Merchants/merc_"+name+".txt","\n").split("\n");
+        String[] merchAtts = merchSplit[0].split(",",0);
+        Merchant merchant =  new Merchant(Integer.parseInt(merchAtts[1]),new Inventory(),Integer.parseInt(merchAtts[2]),merchAtts[0]);
+        for (int i = 1;i<merchSplit.length;i++){
+            String string = merchSplit[i];
+            switch (merchSplit[i].substring(0,3)){
+                case "<P>":
+                    String potionString = string.substring(3,string.length());
+                    String[] potionAtts = potionString.split(",",0);
+                    Potion potion = new Potion(Integer.parseInt(potionAtts[1]),Integer.parseInt(potionAtts[2]),potionAtts[0],potionAtts[3],Integer.parseInt(potionAtts[4]),potionAtts[5],Integer.parseInt(potionAtts[6]));
+                    merchant.getInventory().addToInventory(potion);
+                    break;
+                case "<T>":
+                    String toolString = string.substring(3,string.length());
+                    String[] toolAtts = toolString.split(",",0);
+                    Equipment equipment = new Equipment(Integer.parseInt(toolAtts[3]),Integer.parseInt(toolAtts[2]),toolAtts[0],toolAtts[1],Integer.parseInt(toolAtts[4]));
+                    merchant.getInventory().addToInventory(equipment);
+                    break;
+                case "<A>":
+                    String armorString1 = string.substring(3,string.length());
+                    String[] armorAtts1 = armorString1.split(",",0);
+                    Armor armor1 = new Armor(Integer.parseInt(armorAtts1[3]),Integer.parseInt(armorAtts1[2]),armorAtts1[0],Integer.parseInt(armorAtts1[1]),armorAtts1[4]);
+                    merchant.getInventory().addToInventory(armor1);
+                    break;
+                case "<W>":
+                    String weaponString3 = string.substring(3,string.length());
+                    merchant.getInventory().addToInventory(weaponFromFile(weaponString3));
+                    break;
+
+            }
+            }
+        return merchant;
+        }
+    }
+
+

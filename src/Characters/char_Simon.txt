@@ -1,0 +1,15 @@
+Simon,1,0,14,125,66,0,1,0,2,0,0,2,119,21,21,1
+<E>Chainmail Boots,3,2,80,Head
+<E>bare chested,0,0,0,Body
+<E>Chainmail Gauntlets,2,2,68,Gloves
+<E>bare legs,0,0,0,Legs
+<E>Chainmail Boots,3,2,120,Boots
+<1>Standard Spear,6,7,185,3,stab
+<2>left punch,3,0,0,1,Crush
+<3>shiv,3,0,0,1,Stab
+<A>Chainmail Gauntlets,2,2,68,Gloves
+<W>empty,0,0,0,0,empty
+<W>empty,0,0,0,0,empty
+<W>Standard Spear,6,7,185,3,stab
+<W>empty,0,0,0,0,empty
+

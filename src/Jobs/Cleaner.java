@@ -37,7 +37,7 @@ public class Cleaner {
         }
     }
 
-    public void cleanup(String[][] floor){
+    public int cleanup(String[][] floor){
         int pay = 0;
         Scanner scanner = new Scanner(System.in);
         boolean clean = false;
@@ -63,6 +63,7 @@ public class Cleaner {
 
         }
         System.out.println("The floor is clean.  You are paid "+pay+" dollars.");
+        return pay;
     }
 
 }
