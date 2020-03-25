@@ -24,7 +24,7 @@ public class Fight {
         }
         if (!charWins){
             System.out.println(enemyNPC.getName()+" killed you.\n\n");
-            character.getAttributes().getInventory().setMoney(character.getAttributes().getInventory().getMoney()-enemyNPC.getInventory().getMoney());
+            character.getAttributes().getInventory().setMoney(character.getAttributes().getInventory().getMoney()-enemyNPC.getInventory().getMoney()+(character.getAttributes().getLuck()*5));
             character.setHealth(character.getMaxHealth());
         }
         return charWins;

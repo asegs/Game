@@ -1,20 +1,27 @@
-Jim,3514,-1
+Jim,2870,4
 <A>Leather Chestpiece,4,8,224,Body
 <A>Leather Chestpiece,4,8,224,Body
 <W>Light Spear,4,5,112,2,stab
 <A>Leather Chestpiece,4,8,224,Body
 <W>Light Sword,5,3,162,1,light slash
-<A>Leather Gauntlets,1,1,29,Gloves
 <W>Light Spear,4,5,112,2,stab
 <A>Chainmail Boots,3,2,80,Boots
 <W>Great Bow,6,5,216,112,stab
 <A>Steel Gauntlets,3,3,78,Gloves
 <W>Great Sword,10,7,288,2,light slash
 <W>Standard Sword,7,4,180,2,light slash
-<A>Cloth Boots,1,0,28,Boots
 <W>Concealed Bow,2,0,60,40,stab
-<A>Cloth Helmet,1,1,33,Head
 <W>Standard Sword,7,4,180,2,light slash
 <A>Steel Helmet,4,7,166,Head
 <A>Chainmail Boots,3,2,120,Boots
 <A>Chainmail Boots,3,2,80,Head
+<A>Steel Chestpiece,9,29,603,Boots
+<W>Concealed Axe,4,1,78,1,heavy slash
+<W>Light Spear,4,5,112,2,stab
+<W>Concealed Sword,3,1,81,1,light slash
+<A>Steel Leg guards,6,11,218,Head
+<A>Leather Chestpiece,4,8,224,Head
+<A>Steel Helmet,4,7,166,Gloves
+<A>Cloth Boots,1,0,75,Boots
+<A>Chainmail Leg guards,4,6,125,Body
+<A>Chainmail Leg guards,4,6,125,Boots

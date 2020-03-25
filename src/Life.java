@@ -9,9 +9,9 @@ public class Life {
     Scanner scanner = new Scanner(System.in);
     public void hub(Character character) throws InterruptedException {
         int toDo = 0;
-        while (toDo>=0&&toDo<=4) {
+        while (toDo>=0&&toDo<=6) {
             System.out.println("You have "+character.getAttributes().getInventory().getMoney()+" dollars.");
-            System.out.println("Do you want to go shopping (0), go to work (1), duel (2), set your loadout (3), view your loadout (4), or save/quit (5):");
+            System.out.println("Do you want to go shopping (0), go to work (1), duel (2), set your loadout (3), view your loadout (4), upgrade your loadout (5). or save/quit (6):");
             toDo = scanner.nextInt();
             switch (toDo){
                 case 0:
@@ -67,6 +67,17 @@ public class Life {
                     System.out.println(character.getEquipped().toString());
                     break;
                 case 5:
+                    Smithing smithing =  new Smithing();
+                    Weapon weapon = (smithing.upgradeWeapon(character.getEquipped().getMain()));
+                    if (character.getAttributes().getInventory().getMoney()>weapon.getValue()){
+                        character.getAttributes().getInventory().spendMoney(weapon.getValue());
+                        character.getEquipped().setMain(weapon);
+                    }
+                    else {
+                        System.out.println("Sorry, you cannot afford that.");
+                    }
+                    break;
+                case 6:
                     character.export();
                     System.out.println("See you in another lifetime.");
                     System.exit(0);

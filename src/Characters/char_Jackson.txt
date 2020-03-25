@@ -1,0 +1,13 @@
+Jackson,1,0,17,145,72,0,2,0,1,0,1,2,31,18,18,1
+<E>Steel Leg guards,6,11,218,Head
+<E>bare chested,0,0,0,Body
+<E>bare hands,0,0,0,Gloves
+<E>bare legs,0,0,0,Legs
+<E>barefoot,0,0,0,Boots
+<1>,11,5,880,2,stab
+<2>left punch,3,0,0,1,Crush
+<3>shiv,3,0,0,1,Stab
+<A>Cloth Helmet,1,1,52,Head
+<A>Chainmail Gauntlets,2,2,45,Legs
+<A>Leather Gauntlets,1,1,34,Gloves
+
